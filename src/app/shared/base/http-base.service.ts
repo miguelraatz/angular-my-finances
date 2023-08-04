@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 export class HttpBaseService {
   public readonly httpClient!: HttpClient;
 
-  private apiBase = 'http://localhost:3000'
+  private apiBase = 'http://localhost:3000/'
 
-  constructor(private readonly injector: Injector) {
+  constructor(protected readonly injector: Injector) {
     if (injector == null || injector == undefined) {
       throw new Error('Injector não pode ser nulo')
     }
