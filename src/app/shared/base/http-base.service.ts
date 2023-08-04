@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpBaseService {
-  public readonly httpClient!: HttpClient;
+
+  private readonly httpClient!: HttpClient;
 
   private apiBase = 'http://localhost:3000/'
 
@@ -18,17 +19,17 @@ export class HttpBaseService {
     this.httpClient = injector.get(HttpClient);
   }
 
-  public httpGet(endpoint: string): Observable<any> {
+  protected httpGet(endpoint: string): Observable<any> {
     return this.httpClient.get(`${this.apiBase}${endpoint}`);
   }
 
-  public httpPost(endpoint: string, payload: any): Observable<any> {
+  protected httpPost(endpoint: string, payload: any): Observable<any> {
     return this.httpClient.post(`${this.apiBase}${endpoint}`, payload);
   }
-  public httpPut(endpoint: string, payload: any): Observable<any> {
+  protected httpPut(endpoint: string, payload: any): Observable<any> {
     return this.httpClient.put(`${this.apiBase}${endpoint}`, payload);
   }
-  public httpDelete(endpoint: string): Observable<any> {
+  protected httpDelete(endpoint: string): Observable<any> {
     return this.httpClient.delete(`${this.apiBase}${endpoint}`);
   }
 }

@@ -7,7 +7,7 @@ import { HttpBaseService } from 'src/app/shared/base/http-base.service';
 })
 export class DashboardService extends HttpBaseService{
 
-  endpoint = 'entradas';
+  private endpoint = 'entradas';
 
   constructor(protected override readonly injector: Injector) {
     super(injector);
