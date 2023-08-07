@@ -5,12 +5,12 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 
 const routes: Routes = [
   {path: '', component: ListComponent},
-  {path: 'nova-categoria', component: FormularioComponent},
-  {path: 'editar/:id', component: FormularioComponent}
+  {path: 'editar/:id', component: FormularioComponent},
+  {path: 'novo', component: FormularioComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CategoriasRoutingModule { }
+export class EntradasRoutingModule { }

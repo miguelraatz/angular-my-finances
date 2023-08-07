@@ -1,11 +1,11 @@
 
-
 export interface Entrada {
-    id: number;
+    id?: number;
     nome: string;
     categoriaId: number;
     pago: boolean;
     data: string;
     valor: string;
-    tipo: string; 
+    tipo: string;
 }
+

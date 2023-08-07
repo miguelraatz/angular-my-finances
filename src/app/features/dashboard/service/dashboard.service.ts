@@ -9,11 +9,14 @@ export class DashboardService extends HttpBaseService{
 
   private endpoint = 'entradas';
 
-  constructor(protected override readonly injector: Injector) {
+  constructor(protected override readonly injector: Injector) { 
     super(injector);
   }
 
-  getEntradas(): Observable<any> {
-    return this.httpGet(this.endpoint)
+
+  getEntradas() : Observable<any>{
+    return this.httpGet(this.endpoint);
   }
+
+
 }

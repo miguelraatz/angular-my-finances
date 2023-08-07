@@ -8,29 +8,31 @@ import { Categoria } from '../models/categoria.model';
 })
 export class CategoriaService extends HttpBaseService{
 
-  private endPoint = 'categorias'
+  private endpoint = 'categorias';
 
-  constructor(protected override readonly injector: Injector) {
+  constructor(protected override readonly injector: Injector) { 
     super(injector)
   }
 
-  getCategorias(): Observable<any> {
-    return this.httpGet(this.endPoint)
+
+  getCategorias(): Observable<any>{
+    return this.httpGet(this.endpoint);
   }
 
-  getCategoriasForId(id: number): Observable<any> {
-    return this.httpGet(`${this.endPoint}/${id}`)
+  getCategoriasPeloId(id: number): Observable<any>{
+    return this.httpGet(`${this.endpoint}/${id}`);
   }
 
-  editCategory(payload: Categoria): Observable<any> {
-    return this.httpPut(`${this.endPoint}/${payload.id}`, payload)
+  alterarCategoria(payload: Categoria): Observable<any> {
+    return this.httpPut(`${this.endpoint}/${payload.id}`, payload)
   }
 
-  deleteCategory(id: number): Observable<any> {
-    return this.httpDelete(`${this.endPoint}/${id}`);
+  excluirCategoria(id: number): Observable<any> {
+    return this.httpDelete(`${this.endpoint}/${id}`);
   }
 
-  createCategory(payload: Categoria): Observable<any> {
-    return this.httpPost(`${this.endPoint}`, payload)
+  criarCategoria(payload: Categoria): Observable<any> {
+    return this.httpPost(`${this.endpoint}`, payload)
   }
+
 }

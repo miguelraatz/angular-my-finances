@@ -9,11 +9,11 @@ export class HttpBaseService {
 
   private readonly httpClient!: HttpClient;
 
-  private apiBase = 'http://localhost:3000/'
+  private apiBase = 'http://localhost:3000/';
 
-  constructor(protected readonly injector: Injector) {
-    if (injector == null || injector == undefined) {
-      throw new Error('Injector não pode ser nulo')
+  constructor(protected readonly injector: Injector) { 
+    if(injector == null || injector == undefined){
+      throw new Error('Injector não pode ser nulo');
     }
 
     this.httpClient = injector.get(HttpClient);
@@ -23,13 +23,21 @@ export class HttpBaseService {
     return this.httpClient.get(`${this.apiBase}${endpoint}`);
   }
 
-  protected httpPost(endpoint: string, payload: any): Observable<any> {
-    return this.httpClient.post(`${this.apiBase}${endpoint}`, payload);
+  protected httpPost(endpoint: string, dados: any): Observable<any> {
+    return this.httpClient.post(`${this.apiBase}${endpoint}`, dados);
   }
-  protected httpPut(endpoint: string, payload: any): Observable<any> {
-    return this.httpClient.put(`${this.apiBase}${endpoint}`, payload);
+
+  protected httpPut(endpoint: string, dados:any): Observable<any> {
+    return this.httpClient.put(`${this.apiBase}${endpoint}`, dados);
   }
+
   protected httpDelete(endpoint: string): Observable<any> {
     return this.httpClient.delete(`${this.apiBase}${endpoint}`);
   }
+
+
+
+  // Tratamento erro e excessão 
+
+
 }

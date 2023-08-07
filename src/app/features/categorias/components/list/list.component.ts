@@ -12,46 +12,45 @@ import { Categoria } from '../../models/categoria.model';
 })
 export class ListComponent implements AfterViewInit, OnInit{
 
-  displayedColumns: string[] = ['nome', 'descricao', 'editar', 'excluir'];
+  displayedColumns: string[] = [ 'nome', 'descricao', 'editar', 'excluir'];
   dataSource = new MatTableDataSource<Categoria>();
-  categorias: Categoria[] = []
+  categorias: Categoria[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private categoriaService: CategoriaService,
-    private router: Router) {
+    private router: Router){
 
   }
-
   ngOnInit(): void {
-    this.searchCategory();
+    this.buscarCategorias();
   }
 
-  searchCategory() {
+  buscarCategorias() {
     this.categoriaService.getCategorias()
     .subscribe((categorias: Categoria[]) => {
       this.categorias = categorias;
       this.dataSource.data = this.categorias;
-    })
+    });
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  chamarEdicao(categoria: Categoria) {
-    this.router.navigate(['categorias', 'editar', categoria.id])
+  chamarEdicao(categoria: Categoria){
+    this.router.navigate(['categorias', 'editar', categoria.id]);
   }
 
-  deleteCategory(id: number) {
-    this.categoriaService.deleteCategory(id)
-    .subscribe((response) => {
-      this.searchCategory();
+  excluir(id: number){
+    this.categoriaService.excluirCategoria(id)
+    .subscribe(resposta => {
+      this.buscarCategorias();
     })
   }
 
-  newCategory() {
-    this.router.navigate(['categorias', 'nova-categoria'])
+  novaCategoria(){
+    this.router.navigate(['categorias','nova-categoria'])
   }
 
 }
