@@ -33,13 +33,13 @@
   ],
   "entradas": [
     {
-      "id": 1,
       "nome": "Gás de Cozinha",
       "categoriaId": 1,
+      "data": "07/08/2023",
       "pago": true,
-      "data": "14/03/2023",
-      "valor": 70.8,
-      "tipo": "despesa"
+      "tipo": "despesa",
+      "valor": "90",
+      "id": 1
     },
     {
       "id": 2,
